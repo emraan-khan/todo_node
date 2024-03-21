@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/home.css">
+    <title>
+        <%=title%>
+    </title>
+</head>
+
+<body>
+    <h1>
+        <%=title%>
+    </h1>
+    <form action="/create_todo" method="POST" >
+        <input type="text" name="name" required class="todo_name" placeholder="add task ...">
+        <div class="sd">
+        <select name="category" id="" required class="select_category">
+            <option value="">choose</option>
+            <option value="Personal">Personal</option>
+            <option value="Work">Work</option>
+            <option value="Professional">Professional</option>
+            <option value="Other">Other</option>
+        </select>
+        <input type="date" name="date" required class="date">
+    </div>
+    <div class="btn-div">
+        <button type="submit" class="btn">Delete Task</button>
+        <button type="submit" class="btn">Add Task</button>
+
+    </div>
+    </form>
+
+    <div class="list">
+        <% for(let i of todo_list) {%>
+            <div class="todo_list">
+                <span class="title">
+                    <input type="checkbox" name="completed"/>
+                  <span> <%=i.name %></span>
+                    <%=i.category%>
+                </span>
+                <%=i.date%>
+            </div>
+            <% } %>
+    </div>
+</body>
+
+</html>
