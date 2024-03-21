@@ -37,6 +37,25 @@ module.exports.create = function(req , res){
 module.exports.update=function(req,res){
     const {id}=req.body;
     console.log(id);
-    
+    todo.findById(id)
+        .then(foundTodo => {
+            if (!foundTodo) {
+                return res.status(404).send('Document not found');
+            }
+
+            // Toggle the value of the 'completed' field
+            foundTodo.completed = !foundTodo.completed;
+
+            // Save the updated document
+            return foundTodo.save();
+        })
+        .then(updatedTodo => {
+            console.log('Document updated successfully:', updatedTodo);
+            res.status(200).json(updatedTodo); // Send the updated document as the response
+        })
+        .catch(error => {
+            console.error('Error updating document:', error);
+            res.status(500).send('Error updating document');
+        });
 
 }
