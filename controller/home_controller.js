@@ -58,4 +58,18 @@ module.exports.update=function(req,res){
             res.status(500).send('Error updating document');
         });
 
-}
+};
+
+
+module.exports.delete = function(req, res) {
+
+    todo.deleteMany({completed : true})
+        .then(() => {
+            console.log('Completed documents deleted successfully');
+            return res.status(200).send('Completed documents deleted successfully');
+            })
+        .catch(err => {
+            console.log('Error while deleting : ', err);
+        });
+};
+

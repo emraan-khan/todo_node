@@ -1,11 +1,5 @@
 const toggle_btn = document.querySelectorAll('.toggle_check');
-
-// toggle_btn.addEventListener('click',function(){
-    
-//     console.log("toggled")
-// })
-
-console.log(toggle_btn);
+const delete_btn = document.querySelector('#dlt_btn');
 
 toggle_btn.forEach((btn,index)=>{
     btn.addEventListener('click', function () {
@@ -34,4 +28,23 @@ function toggleTask(id){
     .catch(err =>{
         console.log("Error happend: ",err);
     })
-}
+};
+
+
+delete_btn.addEventListener('click',function(){
+
+    fetch('/deleteDoc', {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(()=>{
+        console.log('Deleted Sucessfully!!!')
+        window.location.reload();
+    })
+    .catch((err)=>{
+        console.log('Error in deleting!!!')
+    })
+});
+

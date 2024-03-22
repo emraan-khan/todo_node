@@ -7,6 +7,8 @@ router.get('/',homeController.home);
 
 router.post('/create_todo',homeController.create);
 
-router.put('/updateDoc',homeController.update)
+router.put('/updateDoc',homeController.update);
+
+router.delete('/deleteDoc', homeController.delete);
 
 module.exports = router;

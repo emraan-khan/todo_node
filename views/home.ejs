@@ -8,6 +8,8 @@
     <title>
         <%=title%>
     </title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -27,13 +29,13 @@
         <input type="date" name="date" required class="date">
     </div>
     <div class="btn-div">
-        <button type="submit" class="btn">Delete Task</button>
         <button type="submit" class="btn">Add Task</button>
+        <button class="btn" type="button" id="dlt_btn">Delete Task</button>
 
     </div>
     </form>
 
-    <div class="list">
+    <div class="list" id="todoList">
         <% for(let i of todo_list) {%>
             <div class="todo_list">
                 <span class="title">
